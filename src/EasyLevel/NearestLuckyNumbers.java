@@ -21,33 +21,12 @@ public class NearestLuckyNumbers {
 
             int upUserInput=userInput;
             int lowUserInput=userInput;
-            int removeFrequency=0;
-            ArrayList<Integer> al = new ArrayList<>();
+            int listSize = 5000; // Must be bigger than userInput
+            ArrayList al = getLuckyList(listSize);
 
-            //Adds all numbers to the list
-            for (int i = 0; i < 1000; i++) {
-                al.add(i,i+1);
-            }
-            // Remove numbers from list to get lucky numbers
-            while(removeFrequency<al.size()){ // add some statement on how long run depending on user input
-                int x = al.get(removeFrequency);
-                for (int i = 1; i <al.size() ; i++) {
-                    if(i*x <al.size()){
-
-                        if(removeFrequency==0){
-                            al.remove(i*x);
-                        }
-                        else{
-                            al.remove((i*x)-i);
-                            // -i to compensate for every removed nr in the list
-                        }
-                    }
-                }
-                removeFrequency++;
-            }
             //Checks either if its a lucky nr, or the closest ones and prints
             if(al.contains(userInput)){
-                System.out.println(userInput+" is a lucky number");
+                System.out.println(userInput+" is a lucky number\n");
             }
             else{
                 while(!al.contains(upUserInput)){
@@ -56,8 +35,36 @@ public class NearestLuckyNumbers {
                 while(!al.contains(lowUserInput)){
                     lowUserInput--;
                 }
-                System.out.println(lowUserInput+"<"+userInput+"<"+upUserInput);
+                System.out.println(lowUserInput+"<"+userInput+"<"+upUserInput+"\n");
             }
         }
+    }
+
+    public static ArrayList<Integer> getLuckyList(int listSize){
+        int removeFrequency=0;
+        ArrayList<Integer> al = new ArrayList<>();
+
+        //Adds all numbers to the list
+        for (int i = 0; i < listSize; i++) {
+            al.add(i,i+1);
+        }
+        // Remove numbers from list to get lucky numbers
+        while(removeFrequency<al.size()){ // add some statement on how long run depending on user input
+            int x = al.get(removeFrequency);
+            for (int i = 1; i <al.size() ; i++) {
+                if(i*x <al.size()){
+
+                    if(removeFrequency==0){
+                        al.remove(i*x);
+                    }
+                    else{
+                        al.remove((i*x)-i);
+                        // -i to compensate for every removed nr in the list
+                    }
+                }
+            }
+            removeFrequency++;
+        }
+        return al;
     }
 }
