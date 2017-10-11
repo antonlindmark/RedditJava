@@ -2,7 +2,7 @@ package codingTest;
 
 import java.util.Scanner;
 
-public class KattisProblemEasy {
+public class ProblemEasy {
 
     public static void main(String [] args ) {
         Scanner sc = new Scanner(System.in);

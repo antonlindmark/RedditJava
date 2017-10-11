@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 
-public class KattisProblemHard {
+public class ProblemHard {
     public  static  void main(String args[]){
 
 
